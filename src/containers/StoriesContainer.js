@@ -4,11 +4,12 @@ import { Story } from '../components/Story';
 import { StoriesContainerWrapper } from '../styles/StoriesContainerStyles';
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
 
-export const StoriesContainer = () => {
+export const StoriesContainer = ({ fetchURL }) => {
   const [storyIds, setStoryIds] = useState([]);
   const { count } = useInfiniteScroll();
   useEffect(() => {
-    getStoryIds().then(data => setStoryIds(data));
+    console.log(fetchURL);
+    getStoryIds(fetchURL).then(data => setStoryIds(data));
   }, []);
 
   return (

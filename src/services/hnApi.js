@@ -1,9 +1,7 @@
 import axios from 'axios';
+import { storyURL } from './URL';
+import { selectFetch } from './selectFetch';
 import { selectFields } from './selecdFields';
-
-export const baseURL = 'https://hacker-news.firebaseio.com/v0/';
-export const newStoriesURL = `${baseURL}newstories.json`;
-export const storyURL = `${baseURL}/item/`;
 
 export const getStory = async storyId => {
   try {
@@ -16,9 +14,10 @@ export const getStory = async storyId => {
   }
 };
 
-export const getStoryIds = async () => {
+export const getStoryIds = async fetchURL => {
+  const targetURL = selectFetch(fetchURL);
   try {
-    const result = await axios.get(newStoriesURL).then(({ data }) => data);
+    const result = await axios.get(targetURL).then(({ data }) => data);
     return result;
   } catch (error) {
     console.log(error);

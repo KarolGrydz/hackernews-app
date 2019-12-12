@@ -1,5 +1,10 @@
 import React from 'react';
 
 export const Navbar = () => {
-  return <div>NAVBAR</div>;
+  return (
+    <div>
+      <button>News</button>
+      <button>Best</button>
+    </div>
+  );
 };
