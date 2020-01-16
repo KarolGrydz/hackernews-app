@@ -1,13 +1,10 @@
 import styled from 'styled-components';
 
 export const StoryWrapper = styled.section`
-  padding-top: 10px;
+  padding: 10px;
   margin-bottom: 20px;
-  border-top: 1px solid #cccccc;
-
-  &:first-of-type {
-    border-top: 0;
-  }
+  border: 1px solid #cccccc;
+  border-radius: 15px;
 
   &:last-of-type {
     margin-bottom: 0;
@@ -24,8 +21,11 @@ export const StoryTitle = styled.h1`
 
   a {
     color: #2e2e2c;
-    background-color: #f8dc3d;
     text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 `;
 

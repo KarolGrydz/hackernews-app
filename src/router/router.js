@@ -4,7 +4,7 @@ export const routes = [
     data: 'NEWS'
   },
   {
-    path: '/best',
-    data: 'BEST'
+    path: '/top',
+    data: 'TOP'
   }
 ];

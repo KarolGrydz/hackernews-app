@@ -11,24 +11,23 @@ import {
 export const Story = ({ storyId }) => {
   const [story, setStory] = useState({});
   useEffect(() => {
-    console.log('story ID', storyId);
     getStory(storyId).then(data => data && data.url && setStory(data));
   }, []);
 
   return story && story.url ? (
-    <StoryWrapper data-testid="story">
+    <StoryWrapper data-testid='story'>
       <StoryTitle>
         <a href={story.url}>{story.title}</a>
       </StoryTitle>
       <StoryMeta>
-        <span data-testid="story-by">
-          <StoryMetaElement color="#000">By: </StoryMetaElement>
+        <span data-testid='story-by'>
+          <StoryMetaElement color='#000'>By: </StoryMetaElement>
           {story.by}
         </span>
       </StoryMeta>
       <StoryMeta>
-        <span data-testid="story-time">
-          <StoryMetaElement color="#000">Posted: </StoryMetaElement> {` `}
+        <span data-testid='story-time'>
+          <StoryMetaElement color='#000'>Posted: </StoryMetaElement> {` `}
           {mapTime(story.time)} ago
         </span>
       </StoryMeta>
