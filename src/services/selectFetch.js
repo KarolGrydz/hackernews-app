@@ -1,11 +1,16 @@
-import { newStoriesURL, topStoriesURL } from './URL';
+import {
+  newStoriesURL,
+  topStoriesURL,
+  bestStoriesURL,
+  jobsStoriesURL
+} from './URL';
 
 export const selectFetch = fetchURL => {
   const actionMap = {
     NEWS: newStoriesURL,
     TOP: topStoriesURL,
-    BEST: 'BEST',
-    JOBS: 'JOBS'
+    BEST: bestStoriesURL,
+    JOBS: jobsStoriesURL
   };
 
   if (actionMap[fetchURL]) return actionMap[fetchURL];

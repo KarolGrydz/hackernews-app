@@ -1,11 +1,11 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Navbar } from './containers/Navbar';
 import { StoriesContainer } from './containers/StoriesContainer';
 import { Home } from './components/Home';
+import { Favorite } from './components/Favorite';
 import { GlobalStyle } from './styles/GlobalStyle';
 import { Sidebar } from './containers/Sidebar';
-import { routes } from './router/router';
 
 export const App = () => (
   <>
@@ -14,15 +14,10 @@ export const App = () => (
       <Navbar />
       <Sidebar />
       <Switch>
-        <Route path='/' component={Home} />
-        <Route
-          path='/news'
-          render={() => <StoriesContainer title='News' fetchURL='NEWS' />}
-        />
-        <Route
-          path='/top'
-          render={() => <StoriesContainer title='Top' fetchURL='TOP' />}
-        />
+        <Route path='/' exact component={Home} />
+        <Route path='/favorite' exact component={StoriesContainer} />
+        <Route path='/archive' exact component={StoriesContainer} />
+
         {/* {routes.map(route => (
           <Route
             key={route.path}
