@@ -6,7 +6,7 @@ export const Navbar = () => {
   return (
     <div>
       {routes.map(route => (
-        <Link key={route.state.id} to={route}>
+        <Link key={route.state.id} to={route.pathname}>
           {route.state.title}
         </Link>
       ))}

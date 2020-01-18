@@ -18,7 +18,7 @@ export const App = () => (
             key={route.state.id}
             path={route.pathname}
             exact
-            component={StoriesContainer}
+            render={props => <StoriesContainer {...props} data={route.state} />}
           />
         ))}
       </Switch>

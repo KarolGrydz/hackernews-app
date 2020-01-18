@@ -1,6 +1,7 @@
 export const routes = [
   {
     pathname: '/',
+    component: 'StoriesContainer',
     state: {
       id: 1,
       title: 'News',
@@ -9,6 +10,7 @@ export const routes = [
   },
   {
     pathname: '/top',
+    component: 'StoriesContainer',
     state: {
       id: 2,
       title: 'Top',
@@ -17,6 +19,7 @@ export const routes = [
   },
   {
     pathname: '/best',
+    component: 'StoriesContainer',
     state: {
       id: 3,
       title: 'Best',
@@ -25,6 +28,7 @@ export const routes = [
   },
   {
     pathname: '/jobs',
+    component: 'StoriesContainer',
     state: {
       id: 4,
       title: 'Jobs',
@@ -33,18 +37,11 @@ export const routes = [
   },
   {
     pathname: '/favorite',
+    component: 'StoriesContainer',
     state: {
       id: 5,
       title: 'Favorite',
-      fetchURL: 'NEWS'
-    }
-  },
-  {
-    pathname: '/archive',
-    state: {
-      id: 6,
-      title: 'Archive',
-      fetchURL: 'NEWS'
+      fetchURL: null
     }
   }
 ];
