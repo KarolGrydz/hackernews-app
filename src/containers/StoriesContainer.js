@@ -10,6 +10,7 @@ export const StoriesContainer = () => {
   const { title, fetchURL } = location.state;
   const [storyIds, setStoryIds] = useState([]);
   const { count } = useInfiniteScroll();
+  console.log(count);
   useEffect(() => {
     getStoryIds(fetchURL).then(data => setStoryIds(data));
   }, [fetchURL]);

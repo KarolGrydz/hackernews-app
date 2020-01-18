@@ -10,8 +10,6 @@ export const Navbar = () => {
           {route.state.title}
         </Link>
       ))}
-      <Link to='/'>Home</Link>
-      <Link to={{ pathname: `/news`, state: { title: 'News' } }}>News</Link>
     </div>
   );
 };
