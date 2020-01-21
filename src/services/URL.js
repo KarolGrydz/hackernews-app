@@ -4,3 +4,4 @@ export const topStoriesURL = `${baseURL}topstories.json`;
 export const bestStoriesURL = `${baseURL}beststories.json`;
 export const jobsStoriesURL = `${baseURL}jobstories.json`;
 export const storyURL = `${baseURL}/item/`;
+export const authorURL = `${baseURL}/:author.json`;

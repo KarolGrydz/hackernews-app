@@ -1,7 +1,9 @@
+import { StoriesContainer } from '../containers/StoriesContainer';
+import { AuthorContainer } from '../containers/AuthorContainer';
 export const routes = [
   {
     pathname: '/',
-    component: 'StoriesContainer',
+    component: StoriesContainer,
     state: {
       id: 1,
       title: 'News',
@@ -10,7 +12,7 @@ export const routes = [
   },
   {
     pathname: '/top',
-    component: 'StoriesContainer',
+    component: StoriesContainer,
     state: {
       id: 2,
       title: 'Top',
@@ -19,7 +21,7 @@ export const routes = [
   },
   {
     pathname: '/best',
-    component: 'StoriesContainer',
+    component: StoriesContainer,
     state: {
       id: 3,
       title: 'Best',
@@ -28,7 +30,7 @@ export const routes = [
   },
   {
     pathname: '/jobs',
-    component: 'StoriesContainer',
+    component: StoriesContainer,
     state: {
       id: 4,
       title: 'Jobs',
@@ -37,10 +39,19 @@ export const routes = [
   },
   {
     pathname: '/favorite',
-    component: 'StoriesContainer',
+    component: StoriesContainer,
     state: {
       id: 5,
       title: 'Favorite',
+      fetchURL: null
+    }
+  },
+  {
+    pathname: '/:author',
+    component: AuthorContainer,
+    state: {
+      id: 6,
+      title: 'Author',
       fetchURL: null
     }
   }

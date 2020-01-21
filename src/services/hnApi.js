@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { storyURL } from './URL';
-import { selectFetch } from './selectFetch';
+import { seletRoutes } from './selectRoutes';
 import { selectFields } from './selecdFields';
+import { authorFields } from './authorFields';
 
 export const getStory = async storyId => {
   try {
@@ -15,10 +16,18 @@ export const getStory = async storyId => {
 };
 
 export const getStoryIds = async fetchURL => {
-  const targetURL = selectFetch(fetchURL);
+  const targetURL = seletRoutes(fetchURL);
   try {
     const result = await axios.get(targetURL).then(({ data }) => data);
     return result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getAuthor = async authorId => {
+  try {
+    const result = await axios.get(`${storyURL}`);
   } catch (error) {
     console.log(error);
   }

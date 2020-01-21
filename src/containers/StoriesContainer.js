@@ -11,7 +11,6 @@ export const StoriesContainer = ({ data }) => {
   const [storyIds, setStoryIds] = useState([]);
   const { count } = useInfiniteScroll();
   const storage = createLocalStorage();
-  console.log(count);
   useEffect(() => {
     if (title === 'Favorite') {
       setStoryIds(
@@ -23,9 +22,8 @@ export const StoriesContainer = ({ data }) => {
   }, []);
   return (
     <>
-      <StoriesContainerWrapper data-test-id="stories-container">
+      <StoriesContainerWrapper data-test-id='stories-container'>
         <h1>Hacker {title} Stories</h1>
-        {console.log(storyIds.length)}
         {storyIds.length === 0 ? (
           <Spinner />
         ) : (

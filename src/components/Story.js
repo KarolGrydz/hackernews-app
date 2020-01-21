@@ -3,6 +3,7 @@ import { getStory } from '../services/hnApi';
 import { mapTime } from '../mappers/mapTime';
 import { createLocalStorage } from '../localStorage';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import {
   StoryWrapper,
   StoryTitle,
@@ -21,32 +22,32 @@ export const Story = ({ storyId }) => {
         setFav(true);
       }
     });
-  }, [storyId]);
+  }, [fav]);
 
   const toggleFav = () => {
     setFav(!fav);
   };
 
   return story && story.url ? (
-    <StoryWrapper data-testid="story">
+    <StoryWrapper data-testid='story'>
       <StoryTitle>
         <a href={story.url}>{story.title}</a>
       </StoryTitle>
       <StoryMeta>
-        <span data-testid="story-by">
-          <StoryMetaElement color="#000">By: </StoryMetaElement>
-          {story.by}
+        <span data-testid='story-by'>
+          <StoryMetaElement color='#000'>By: </StoryMetaElement>
+          <Link to={`/${story.by}`}>{story.by}</Link>
         </span>
       </StoryMeta>
       <StoryMeta>
-        <span data-testid="story-time">
-          <StoryMetaElement color="#000">Posted: </StoryMetaElement> {` `}
+        <span data-testid='story-time'>
+          <StoryMetaElement color='#000'>Posted: </StoryMetaElement> {` `}
           {mapTime(story.time)} ago
         </span>
       </StoryMeta>
       <StoryMeta>
-        <span data-testid="story-score">
-          <StoryMetaElement color="#000">Score: </StoryMetaElement> {` `}
+        <span data-testid='story-score'>
+          <StoryMetaElement color='#000'>Score: </StoryMetaElement> {` `}
           {story.score}
         </span>
       </StoryMeta>

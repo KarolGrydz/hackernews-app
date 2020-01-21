@@ -5,7 +5,7 @@ import {
   jobsStoriesURL
 } from './URL';
 
-export const selectFetch = fetchURL => {
+export const seletRoutes = fetchURL => {
   const actionMap = {
     NEWS: newStoriesURL,
     TOP: topStoriesURL,
