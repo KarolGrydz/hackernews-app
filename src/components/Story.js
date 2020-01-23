@@ -31,28 +31,28 @@ export const Story = ({ storyId }) => {
 
   return story && story.url ? (
     <>
-      <StoryWrapper data-testid='story'>
+      <StoryWrapper data-testid="story">
         <div>
           <StoryTitle>
             <a href={story.url}>{story.title}</a>
           </StoryTitle>
           <div style={{ display: 'inline-flex' }}>
             <StoryMeta>
-              <span data-testid='story-by'>
-                <StoryMetaElement color='#000'>By: </StoryMetaElement>
+              <span data-testid="story-by">
+                <StoryMetaElement color="#000"></StoryMetaElement>
                 <Link to={`/${story.by}`}>{story.by}</Link>
               </span>
             </StoryMeta>
             <StoryMeta>
-              <span data-testid='story-time'>
-                <StoryMetaElement color='#000'>Posted: </StoryMetaElement> {` `}
+              <span data-testid="story-time">
+                <StoryMetaElement color="#000"> - </StoryMetaElement> {` `}
                 {mapTime(story.time)} ago
               </span>
             </StoryMeta>
           </div>
           <StoryMeta>
-            <span data-testid='story-score'>
-              <StoryMetaElement color='#000'>Score: </StoryMetaElement> {` `}
+            <span data-testid="story-score">
+              <StoryMetaElement color="#000">Score: </StoryMetaElement> {` `}
               {story.score}
             </span>
           </StoryMeta>
@@ -68,8 +68,7 @@ export const Story = ({ storyId }) => {
               <StoryButton
                 onClick={() => (toggleFav(), storage.setItem(storyId, storyId))}
               >
-                <FaRegHeart />
-                Add
+                <FaRegHeart /> Add
               </StoryButton>
             )}
           </StoryMeta>

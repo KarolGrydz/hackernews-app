@@ -38,6 +38,7 @@ export const StoryTitle = styled.h1`
 export const StoryMeta = styled.div`
   font-style: italic;
   margin-top: 10px;
+  font-size: 0.85rem;
 
   > span:first-child {
     margin-right: 10px;
@@ -64,4 +65,16 @@ export const StoryButton = styled.button`
   display: inline-flex;
   justify-content: center;
   cursor: pointer;
+  height: 25px;
+  width: 100px;
+  border-radius: 15px;
+  border: 1px solid #3c4043;
+
+  &:hover {
+    box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.36);
+  }
+
+  > svg {
+    margin-right: 5px;
+  }
 `;
