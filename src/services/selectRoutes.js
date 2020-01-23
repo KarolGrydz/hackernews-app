@@ -2,7 +2,8 @@ import {
   newStoriesURL,
   topStoriesURL,
   bestStoriesURL,
-  jobsStoriesURL
+  jobsStoriesURL,
+  authorURL
 } from './URL';
 
 export const seletRoutes = fetchURL => {
@@ -10,7 +11,8 @@ export const seletRoutes = fetchURL => {
     NEWS: newStoriesURL,
     TOP: topStoriesURL,
     BEST: bestStoriesURL,
-    JOBS: jobsStoriesURL
+    JOBS: jobsStoriesURL,
+    AUTHOR: authorURL
   };
 
   if (actionMap[fetchURL]) return actionMap[fetchURL];

@@ -1,5 +1,4 @@
 import { StoriesContainer } from '../containers/StoriesContainer';
-import { AuthorContainer } from '../containers/AuthorContainer';
 export const routes = [
   {
     pathname: '/',
@@ -48,7 +47,7 @@ export const routes = [
   },
   {
     pathname: '/:author',
-    component: AuthorContainer,
+    component: StoriesContainer,
     state: {
       id: 6,
       title: 'Author',

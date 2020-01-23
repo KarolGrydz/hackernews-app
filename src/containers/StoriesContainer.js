@@ -1,29 +1,118 @@
 import React, { useEffect, useState } from 'react';
-import { getStoryIds } from '../services/hnApi';
+import { useParams } from 'react-router-dom';
+import { AiFillLike } from 'react-icons/ai';
+import { FaNewspaper } from 'react-icons/fa';
+import { FiTrendingUp } from 'react-icons/fi';
+import { MdPersonOutline, MdWork, MdFavorite } from 'react-icons/md';
+import { GiNetworkBars } from 'react-icons/gi';
+import { getStoryIds, getAuthorIds } from '../services/hnApi';
 import { Story } from '../components/Story';
-import { StoriesContainerWrapper } from '../styles/StoriesContainerStyles';
+import {
+  StoriesContainerWrapper,
+  AuthorMeta,
+  AuthorMetaElement,
+  IconTitle,
+  StoriesContainerTitle
+} from '../styles/StoriesContainerStyles';
 import { useInfiniteScroll } from '../hooks/useInfiniteScroll';
 import { createLocalStorage } from '../localStorage';
 import { Spinner } from '../components/Spinner';
+import { mapTime } from '../mappers/mapTime';
 
 export const StoriesContainer = ({ data }) => {
+  const { author } = useParams();
   const { title, fetchURL } = data;
   const [storyIds, setStoryIds] = useState([]);
+  const [authorData, setAuthorData] = useState([]);
   const { count } = useInfiniteScroll();
   const storage = createLocalStorage();
   useEffect(() => {
-    if (title === 'Favorite') {
-      setStoryIds(
-        Object.keys(storage).filter(item => (parseInt(item, 10) ? item : null))
-      );
-    } else {
-      getStoryIds(fetchURL).then(data => setStoryIds(data));
+    switch (title) {
+      case 'Favorite':
+        favoriteCase();
+        break;
+      case 'Author':
+        authorCase();
+        break;
+      default:
+        defaultCase();
+        break;
     }
   }, []);
+
+  const favoriteCase = () => {
+    setStoryIds(
+      Object.keys(storage).filter(item => (parseInt(item, 10) ? item : null))
+    );
+  };
+  const authorCase = () => {
+    getAuthorIds(author).then(data => {
+      setAuthorData(data);
+      setStoryIds(data.submitted);
+    });
+  };
+  const defaultCase = () => {
+    getStoryIds(fetchURL).then(data => setStoryIds(data));
+  };
+
   return (
     <>
       <StoriesContainerWrapper data-test-id='stories-container'>
-        <h1>Hacker {title} Stories</h1>
+        {title === 'Author' ? (
+          <>
+            <div style={{ display: 'inline-flex' }}>
+              <IconTitle backgroundColor='#1e8e3e'>
+                <MdPersonOutline />
+              </IconTitle>
+              <StoriesContainerTitle>{author} Profile</StoriesContainerTitle>
+            </div>
+            <AuthorMeta>
+              <p>
+                <span>Age: </span>
+                <AuthorMetaElement>
+                  {mapTime(authorData.created)}
+                </AuthorMetaElement>
+              </p>
+            </AuthorMeta>
+            <AuthorMeta>
+              <p>
+                <span>Description: </span>
+                <AuthorMetaElement>
+                  {authorData.about ? authorData.about : 'No description'}
+                </AuthorMetaElement>
+              </p>
+            </AuthorMeta>
+            <AuthorMeta>
+              <p>
+                <span>Popularity: </span>
+                <AuthorMetaElement>
+                  {authorData.karma} <AiFillLike />
+                </AuthorMetaElement>
+              </p>
+            </AuthorMeta>
+          </>
+        ) : (
+          <div style={{ display: 'inline-flex' }}>
+            <IconTitle
+              backgroundColor={
+                title === 'Top'
+                  ? '#1e8e3e'
+                  : title === 'Jobs'
+                  ? '#fa7b17'
+                  : null
+              }
+            >
+              {title === 'News' ? <FaNewspaper /> : null}
+              {title === 'Top' ? <FiTrendingUp /> : null}
+              {title === 'Best' ? <GiNetworkBars /> : null}
+              {title === 'Jobs' ? <MdWork /> : null}
+              {title === 'Favorite' ? <MdFavorite /> : null}
+            </IconTitle>
+            <StoriesContainerTitle>
+              Hacker {title} Stories
+            </StoriesContainerTitle>
+          </div>
+        )}
         {storyIds.length === 0 ? (
           <Spinner />
         ) : (
