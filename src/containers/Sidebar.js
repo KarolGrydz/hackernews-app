@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../context/sidebarContext';
+import { SidebarWrapper } from '../styles/SidebarStyles';
+import { useSpring } from 'react-spring';
 
 export const Sidebar = () => {
-  const [show, setShow] = useState(false);
-  return show ? (
-    <div>
-      <h1>Sidebar</h1>
+  const [state] = useContext(Context);
+  const { sidebar } = state;
+  const props = useSpring({ opacity: 0, from: { opacity: 1 } });
+  return (
+    <SidebarWrapper visibility={sidebar} style={props}>
       <ul>
         <li>News</li>
         <li>Top</li>
@@ -12,6 +16,6 @@ export const Sidebar = () => {
         <li>Jobs</li>
         <li>Favorite</li>
       </ul>
-    </div>
-  ) : null;
+    </SidebarWrapper>
+  );
 };

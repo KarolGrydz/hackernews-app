@@ -4,6 +4,8 @@ export const StoriesContainerWrapper = styled.main`
   max-width: 784px;
   padding: 20px 15px;
   margin: auto;
+  top: -20vh;
+  position: relative;
 `;
 
 export const IconTitle = styled.div`
