@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import { GoPrimitiveDot } from 'react-icons/go';
 import { getStory } from '../services/hnApi';
 import { mapTime } from '../mappers/mapTime';
 import { createLocalStorage } from '../localStorage';
-import { FaRegHeart, FaHeart } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
 import {
   StoryWrapper,
   StoryTitle,
@@ -31,28 +32,30 @@ export const Story = ({ storyId }) => {
 
   return story && story.url ? (
     <>
-      <StoryWrapper data-testid="story">
+      <StoryWrapper data-testid='story'>
         <div>
           <StoryTitle>
             <a href={story.url}>{story.title}</a>
           </StoryTitle>
           <div style={{ display: 'inline-flex' }}>
             <StoryMeta>
-              <span data-testid="story-by">
-                <StoryMetaElement color="#000"></StoryMetaElement>
+              <span data-testid='story-by'>
+                <StoryMetaElement color='#000'></StoryMetaElement>
                 <Link to={`/${story.by}`}>{story.by}</Link>
+                {` `}
+                <GoPrimitiveDot />
               </span>
             </StoryMeta>
             <StoryMeta>
-              <span data-testid="story-time">
-                <StoryMetaElement color="#000"> - </StoryMetaElement> {` `}
+              <span data-testid='story-time'>
+                <StoryMetaElement color='#000'></StoryMetaElement> {` `}
                 {mapTime(story.time)} ago
               </span>
             </StoryMeta>
           </div>
           <StoryMeta>
-            <span data-testid="story-score">
-              <StoryMetaElement color="#000">Score: </StoryMetaElement> {` `}
+            <span data-testid='story-score'>
+              <StoryMetaElement color='#000'>Score: </StoryMetaElement> {` `}
               {story.score}
             </span>
           </StoryMeta>

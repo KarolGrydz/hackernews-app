@@ -40,8 +40,8 @@ export const StoryMeta = styled.div`
   margin-top: 10px;
   font-size: 0.85rem;
 
-  > span:first-child {
-    margin-right: 10px;
+  svg {
+    font-size: 0.5rem;
   }
 
   > span:not(:first-child):before {
