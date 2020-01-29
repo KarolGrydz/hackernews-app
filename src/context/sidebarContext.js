@@ -4,7 +4,7 @@ export const Context = React.createContext();
 
 export const ContextControler = ({ children }) => {
   const initialState = {
-    sidebar: 'visible'
+    sidebar: false
   };
 
   const [state, setState] = useState(initialState);

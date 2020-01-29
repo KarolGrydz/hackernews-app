@@ -3,9 +3,11 @@ import styled from 'styled-components';
 export const NavbarWrapper = styled.div`
   position: sticky;
   top: 0;
-  height: 14vh;
+  display: flex;
   z-index: 100;
   background: #fafafe;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12),
+    0 2px 4px -1px rgba(0, 0, 0, 0.2);
 `;
 
 export const NavbarButton = styled.button`
@@ -25,4 +27,10 @@ export const NavbarButton = styled.button`
     height: 20px;
     width: 20px;
   }
+`;
+
+export const NavbarTittle = styled.h1`
+  text-align: left;
+  margin-left: 25px;
+  margin-top: 25px;
 `;

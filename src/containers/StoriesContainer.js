@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AiFillLike } from 'react-icons/ai';
-import { FaNewspaper } from 'react-icons/fa';
-import { FiTrendingUp } from 'react-icons/fi';
-import { MdPersonOutline, MdWork, MdFavorite } from 'react-icons/md';
-import { GiNetworkBars } from 'react-icons/gi';
 import { getStoryIds, getAuthorIds } from '../services/hnApi';
 import { Story } from '../components/Story';
 import {
@@ -62,7 +58,7 @@ export const StoriesContainer = ({ data }) => {
           <>
             <div style={{ display: 'inline-flex' }}>
               <IconTitle backgroundColor='#1e8e3e'>
-                <MdPersonOutline />
+                <data.icon />
               </IconTitle>
               <StoriesContainerTitle>{author} Profile</StoriesContainerTitle>
             </div>
@@ -102,11 +98,7 @@ export const StoriesContainer = ({ data }) => {
                   : null
               }
             >
-              {title === 'News' ? <FaNewspaper /> : null}
-              {title === 'Top' ? <FiTrendingUp /> : null}
-              {title === 'Best' ? <GiNetworkBars /> : null}
-              {title === 'Jobs' ? <MdWork /> : null}
-              {title === 'Favorite' ? <MdFavorite /> : null}
+              <data.icon />
             </IconTitle>
             <StoriesContainerTitle>
               Hacker {title} Stories

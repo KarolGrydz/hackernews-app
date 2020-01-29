@@ -1,21 +1,43 @@
 import React, { useContext } from 'react';
-import { Context } from '../context/sidebarContext';
-import { SidebarWrapper } from '../styles/SidebarStyles';
 import { useSpring } from 'react-spring';
+import { NavLink } from 'react-router-dom';
+import { Context } from '../context/sidebarContext';
+import {
+  SidebarWrapper,
+  SidebarList,
+  SidebarUL
+} from '../styles/SidebarStyles';
+import { routes } from '../router';
 
 export const Sidebar = () => {
   const [state] = useContext(Context);
   const { sidebar } = state;
-  const props = useSpring({ opacity: 0, from: { opacity: 1 } });
+  let checkWidth = window.innerWidth;
+  const wrapperWidth = useSpring({
+    width: sidebar
+      ? checkWidth > 768
+        ? '280px'
+        : checkWidth.toString()
+      : '0px'
+  });
+  const listVisibality = useSpring({
+    visibility: sidebar ? 'visible' : 'hidden'
+  });
+
   return (
-    <SidebarWrapper visibility={sidebar} style={props}>
-      <ul>
-        <li>News</li>
-        <li>Top</li>
-        <li>Best</li>
-        <li>Jobs</li>
-        <li>Favorite</li>
-      </ul>
+    <SidebarWrapper style={wrapperWidth}>
+      <SidebarUL>
+        {routes.map(route =>
+          route.state.title !== 'Author' ? (
+            <NavLink key={route.state.id} to={route.pathname} exact>
+              <SidebarList style={listVisibality}>
+                <route.state.icon />
+                {route.state.title !== 'Author' ? route.state.title : null}
+              </SidebarList>
+            </NavLink>
+          ) : null
+        )}
+      </SidebarUL>
     </SidebarWrapper>
   );
 };

@@ -1,4 +1,8 @@
 import { StoriesContainer } from '../containers/StoriesContainer';
+import { FaNewspaper } from 'react-icons/fa';
+import { GiNetworkBars } from 'react-icons/gi';
+import { MdWork, MdFavorite, MdPersonOutline } from 'react-icons/md';
+import { FiTrendingUp } from 'react-icons/fi';
 export const routes = [
   {
     pathname: '/',
@@ -6,7 +10,8 @@ export const routes = [
     state: {
       id: 1,
       title: 'News',
-      fetchURL: 'NEWS'
+      fetchURL: 'NEWS',
+      icon: FaNewspaper
     }
   },
   {
@@ -15,7 +20,8 @@ export const routes = [
     state: {
       id: 2,
       title: 'Top',
-      fetchURL: 'TOP'
+      fetchURL: 'TOP',
+      icon: FiTrendingUp
     }
   },
   {
@@ -24,7 +30,8 @@ export const routes = [
     state: {
       id: 3,
       title: 'Best',
-      fetchURL: 'BEST'
+      fetchURL: 'BEST',
+      icon: GiNetworkBars
     }
   },
   {
@@ -33,7 +40,8 @@ export const routes = [
     state: {
       id: 4,
       title: 'Jobs',
-      fetchURL: 'JOBS'
+      fetchURL: 'JOBS',
+      icon: MdWork
     }
   },
   {
@@ -42,7 +50,8 @@ export const routes = [
     state: {
       id: 5,
       title: 'Favorite',
-      fetchURL: null
+      fetchURL: null,
+      icon: MdFavorite
     }
   },
   {
@@ -51,7 +60,8 @@ export const routes = [
     state: {
       id: 6,
       title: 'Author',
-      fetchURL: null
+      fetchURL: null,
+      icon: MdPersonOutline
     }
   }
 ];

@@ -16,6 +16,12 @@ export const StoryWrapper = styled.section`
   img {
     margin: 15px auto 10px auto;
   }
+
+  @media (max-width: 768px) {
+    img {
+      display: none;
+    }
+  }
 `;
 
 export const StoryTitle = styled.h1`
@@ -80,5 +86,6 @@ export const StoryButton = styled.button`
 
   > svg {
     margin-right: 5px;
+    font-size: 1rem;
   }
 `;
