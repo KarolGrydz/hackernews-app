@@ -3,9 +3,15 @@ import {
   getStoryIds,
   getStory,
   newStoriesURL,
-  storyURL
+  storyURL,
+  getAuthorIds
 } from '../services/hnApi';
-import { singularStory, emptySingularStory, storyIds } from '../fixtures';
+import {
+  singularStory,
+  emptySingularStory,
+  storyIds,
+  singluarAuthor
+} from '../fixtures';
 
 jest.mock('axios');
 
@@ -42,6 +48,18 @@ describe('HackerNews API', () => {
       axios.get.mockImplementation(() => Promise.resolve({ data: storyIds }));
 
       const entity = await getStoryIds();
+      expect(axios.get).toHaveBeenCalledTimes(1);
+      expect(axios.get).toHaveBeenCalledWith(newStoriesURL);
+      expect(entity).toEqual(storyIds);
+    });
+  });
+  describe('getAuthorIds funcionality', () => {
+    it('requests and get author from HackerNews API', async () => {
+      axios.get.mockImplementation(() =>
+        Promise.resolve({ data: singluarAuthor })
+      );
+
+      const entity = await getAuthorIds();
       expect(axios.get).toHaveBeenCalledTimes(1);
       expect(axios.get).toHaveBeenCalledWith(newStoriesURL);
       expect(entity).toEqual(storyIds);

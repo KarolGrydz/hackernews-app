@@ -15,3 +15,12 @@ export const emptySingularStory = {
   title: undefined,
   url: undefined
 };
+
+export const singluarAuthor = {
+  id: 'karol123',
+  delay: 1234,
+  created: 12345,
+  karma: 50,
+  about: 'This is sample user',
+  submitted: [8265435, 8168423, 8090946]
+};
